@@ -1,5 +1,5 @@
 -- migrate:up
-CREATE TABLE `posts` (
+CREATE TABLE posts (
   id INT NOT NULL AUTO_INCREMENT,
   content varchar(255),
   user_id integer NOT NULL,
@@ -9,4 +9,4 @@ CREATE TABLE `posts` (
 );
 
 -- migrate:down
-
+drop table posts;
