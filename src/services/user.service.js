@@ -6,7 +6,6 @@ const { validateEmail } = require('../utils/validators');
 
 const signUp = async (email, password) => {
   validateEmail(email);
-
   const user = await userDao.getUserByEmail(email);
 
   if (user) {

@@ -1,17 +1,17 @@
-const authService = require("../services/auth.service");
+const userService = require("../services/user.service");
 
 const signUp = async (req, res) => {
   try {
-    const { email, password, nickname, profileImage, phoneNumber, birtday } =
+    const { email, password, nick_name, profile_image, phone_number, birthday } =
       req.body;
 
-    await authService.signUp(
+    await userService.signUp(
       email,
       password,
-      nickname,
-      profileImage,
-      phoneNumber,
-      birtday
+      nick_name,
+      profile_image,
+      phone_number,
+      birthday
     );
 
     res.status(201).end();
@@ -24,7 +24,7 @@ const signIn = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const accessToken = await authService.signIn(email, password);
+    const accessToken = await userService.signIn(email, password);
 
     res.status(200).json({ accessToken: accessToken });
   } catch (err) {
