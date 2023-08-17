@@ -22,4 +22,16 @@ const postlist = async (req, res) => {
     res.status(err.statusCode || 400).json({ message: err.message });
   }
 };
-module.exports = { createPost, postlist };
+
+const deletePost = async (req, res) => {
+  try { 
+    const { postId, userId } = req.body;
+
+    const result = await deletePost(postId, userId);
+
+    res.status(result.statusCode).json({ message : err.message })
+  } catch (err) {
+    res.status(err.statusCode || 500).json({ message: err.message });
+  }
+};
+module.exports = { createPost, postlist, deletePost };

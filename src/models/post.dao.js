@@ -32,5 +32,18 @@ const postlist = async() => {
     );
 };
 
+const deletePost = async(postId, userId) => {
+  try {
+    await AppDataSource.query(
+    `
+    DELETE FROM posts
+    WHERE id  = ? AND user_id = ?
+    `,
+    [postId, userId]
+  )
+  } catch (err) {
+    throw err;
+  }
+}
 
-module.exports = { createPost, postlist };
+module.exports = { createPost, postlist, deletePost };
