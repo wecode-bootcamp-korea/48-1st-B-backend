@@ -384,4 +384,3 @@ zsdoc/data
 # End of https://www.toptal.com/developers/gitignore/api/vim,macos,node,linux,visualstudiocode,dotenv,webstorm,zsh
 
 db/schema.sql
->>>>>>> 38ca3f1f71e8491bdd516b842db57e7de03a2f08
