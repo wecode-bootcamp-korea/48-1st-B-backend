@@ -2,15 +2,15 @@ const userService = require("../services/user.service");
 
 const signUp = async (req, res) => {
   try {
-    const { email, password, nick_name, profile_image, phone_number, birthday } =
+    const { email, password, nickName, profileImage, phoneNumber, birthday } =
       req.body;
 
     await userService.signUp(
       email,
       password,
-      nick_name,
-      profile_image,
-      phone_number,
+      nickName,
+      profileImage,
+      phoneNumber,
       birthday
     );
 
