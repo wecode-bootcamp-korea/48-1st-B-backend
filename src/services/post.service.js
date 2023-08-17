@@ -12,4 +12,14 @@ const postlist = async () => {
   return await postDao.postlist();
 };
 
-module.exports = { createPost, postlist };
+const deletePost = async (postId, userId) => {
+  if(posts.user_id !== userId) {
+    return { statusCode: 403 }
+  }
+
+  return await postDao.deletePost();
+}
+
+
+
+module.exports = { createPost, postlist, deletePost };
