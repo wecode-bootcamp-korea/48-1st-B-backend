@@ -38,4 +38,19 @@ const postModify = async (req, res) => {
     }
   };
   
-module.exports = { createPost, postlist, postModify };
+  const createLike = async (req, res) => {
+    try {
+      const { userId, postId } = req.body;
+  
+      const result = postService.getLikeId(userId, postId);
+      if (result == true) {
+        res.status(201).send("true");
+      } else if (result == false) {
+        res.status(201).send("false");
+      }
+    } catch (err) {
+      res.status(err.statusCode || 401).json({ message: err.message });
+    }
+  };
+
+module.exports = { createPost, postlist, postModify, createLike};
