@@ -22,7 +22,7 @@ const signIn = async (email, password) => {
   const user = await userDao.getUserByEmail(email);
 
   if (!user) {
-    const err = new Error('specified user does not exist');
+    const err = new Error('specified user does not exist'); 
     err.statusCode = 404;
     throw err;
   }
