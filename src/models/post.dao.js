@@ -31,4 +31,20 @@ const postlist = async () => {
   );
 };
 
-module.exports = { createPost, postlist };
+const modifyPost = async (
+  content,
+  id
+  ) => {
+    await AppDataSource.query(
+      `
+      UPDATE posts 
+       SET content = ?
+       WHERE id= ? 
+      ;
+      `,
+      [content, id]
+    );
+  };
+  
+
+module.exports = { createPost, postlist, modifyPost };

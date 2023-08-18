@@ -11,4 +11,11 @@ const postlist = async () => {
   return await postDao.postlist();
 };
 
-module.exports = { createPost, postlist };
+
+const postModify = async (content, id) => {
+  await postDao.modifyPost(content, id);
+};
+
+
+module.exports = { createPost, postlist, postModify };
+
