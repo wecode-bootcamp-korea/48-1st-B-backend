@@ -13,4 +13,3 @@ ALTER TABLE likes ADD FOREIGN KEY(post_id) REFERENCES posts(id);
 
 ALTER TABLE posts ADD FOREIGN KEY(user_id) REFERENCES users(id);
 -- migrate:down
-du
