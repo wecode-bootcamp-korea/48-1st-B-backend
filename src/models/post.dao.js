@@ -31,4 +31,63 @@ const postlist = async () => {
   );
 };
 
-module.exports = { createPost, postlist };
+const modifyPost = async (
+  content,
+  id
+  ) => {
+    await AppDataSource.query(
+      `
+      UPDATE posts 
+       SET content = ?
+       WHERE id= ? 
+      ;
+      `,
+      [content, id]
+    );
+  };
+  
+  const getLikeId = async (user_id, post_id) => {
+    const likeId = await AppDataSource.query(
+      `
+      SELECT id 
+      FROM likes 
+      WHERE user_id = ? and post_id = ?;
+      `,
+      [user_id, post_id]
+    );
+  
+    if (likeId.length > 0) {
+      return JSON.stringify(likeId[0].id);
+    } else {
+      return null;
+    }
+  };
+  
+  const createLike = async (user_id, post_id) => {
+    await AppDataSource.query(
+      `
+      INSERT INTO likes (
+        user_id,
+        post_id
+      ) VALUES (
+        ?,
+        ?
+      );
+      `,
+      [user_id, post_id]
+    );
+  };
+  
+  const deleteLike = async (id, user_id, post_id) => {
+    await AppDataSource.query(
+      `
+      DELETE 
+      FROM likes l 
+      WHERE id = ? && user_id = ? && post_id = ?;
+      `,
+      [id, user_id, post_id]
+    );
+  };
+  
+
+module.exports = { createPost, postlist, modifyPost, getLikeId, createLike, deleteLike };
